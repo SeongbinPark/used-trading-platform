@@ -1,4 +1,4 @@
-package com.seongbinpark.commons.annotation;
+package com.seongbinpark.usedtradingplatform.commons.annotation;
 
 import java.lang.annotation.*;
 

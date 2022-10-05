@@ -1,7 +1,7 @@
-package com.seongbinpark.commons.config;
+package com.seongbinpark.usedtradingplatform.commons.config;
 
-import com.seongbinpark.commons.interceptor.LoginInterceptor;
-import com.seongbinpark.commons.resolver.LoginMemberArgumentResolver;
+import com.seongbinpark.usedtradingplatform.commons.interceptor.LoginInterceptor;
+import com.seongbinpark.usedtradingplatform.commons.resolver.LoginMemberArgumentResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;

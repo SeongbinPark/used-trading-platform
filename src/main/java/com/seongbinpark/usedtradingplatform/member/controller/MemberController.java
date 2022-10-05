@@ -1,9 +1,8 @@
 package com.seongbinpark.usedtradingplatform.member.controller;
 
 
-import com.seongbinpark.commons.HttpStatusResponseEntity;
-import com.seongbinpark.commons.annotation.LoginMember;
-import com.seongbinpark.commons.annotation.LoginRequired;
+import com.seongbinpark.usedtradingplatform.commons.annotation.LoginMember;
+import com.seongbinpark.usedtradingplatform.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
 import com.seongbinpark.usedtradingplatform.member.dto.PasswordRequest;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import static com.seongbinpark.commons.HttpStatusResponseEntity.*;
+import static com.seongbinpark.usedtradingplatform.commons.HttpStatusResponseEntity.*;
 
 @RestController
 @RequiredArgsConstructor
