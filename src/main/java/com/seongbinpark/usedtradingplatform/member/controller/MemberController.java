@@ -5,6 +5,7 @@ import com.seongbinpark.commons.HttpStatusResponseEntity;
 import com.seongbinpark.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
+import com.seongbinpark.usedtradingplatform.member.dto.ProfileResponse;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
 import com.seongbinpark.usedtradingplatform.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -61,5 +62,12 @@ public class MemberController {
     public ResponseEntity<HttpStatus> logout() {
         loginService.logout();
         return RESPONSE_OK;
+    }
+
+    @LoginRequired
+    @GetMapping("/profile/{id}")
+    public ResponseEntity<ProfileResponse> getMemberProfile(@PathVariable long id) {
+        Member memeber = loginService.getLoginMember(id);
+        return ResponseEntity.ok(ProfileResponse.of(memeber));
     }
 }

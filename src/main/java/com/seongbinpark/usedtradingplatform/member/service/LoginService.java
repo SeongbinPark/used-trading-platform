@@ -11,6 +11,6 @@ public interface LoginService {
 
     public void logout();
 
-    public Member getLoginMember();
+    public Member getLoginMember(long id);
 
 }
