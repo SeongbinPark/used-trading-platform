@@ -5,6 +5,7 @@ import com.seongbinpark.commons.HttpStatusResponseEntity;
 import com.seongbinpark.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
+import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
 import com.seongbinpark.usedtradingplatform.member.dto.ProfileResponse;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
 import com.seongbinpark.usedtradingplatform.member.service.MemberService;
@@ -70,4 +71,14 @@ public class MemberController {
         Member member = loginService.getLoginMember(id);
         return ResponseEntity.ok(ProfileResponse.of(member));
     }
+
+    @LoginRequired
+    @PutMapping("/my-profile")
+    public ResponseEntity<ProfileResponse> updateMemberProfileNickname(long id, ProfileRequest profileRequest) {
+        Member member = memberService.findMemberById(id);
+        memberService.updateMemberProfileNickname(member, profileRequest);
+
+        return ResponseEntity.ok(ProfileResponse.of(member));
+    }
+
 }

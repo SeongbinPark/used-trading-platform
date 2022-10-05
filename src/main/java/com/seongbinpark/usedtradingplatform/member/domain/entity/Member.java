@@ -30,4 +30,8 @@ public class Member {
         this.password = password;
         this.nickname = nickname;
     }
+
+    public void updateProfileNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }

@@ -2,6 +2,7 @@ package com.seongbinpark.usedtradingplatform.member.service;
 
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
+import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
 import com.seongbinpark.usedtradingplatform.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +46,11 @@ public class MemberServiceImpl implements MemberService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    @Transactional
+    public void updateMemberProfileNickname(Member member, ProfileRequest profileRequest) {
+        member.updateProfileNickname(profileRequest.getNickname());
     }
 }
