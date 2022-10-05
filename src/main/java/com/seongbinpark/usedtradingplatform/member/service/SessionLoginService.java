@@ -18,4 +18,9 @@ public class SessionLoginService implements LoginService {
     public void login(long id) {
         httpSession.setAttribute(MEMBER_ID, id);
     }
+
+    @Override
+    public Long getLoginMemberId() {
+        return (Long) httpSession.getAttribute(MEMBER_ID);
+    }
 }
