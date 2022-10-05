@@ -1,6 +1,7 @@
 package com.seongbinpark.usedtradingplatform.member.service;
 
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
 import com.seongbinpark.usedtradingplatform.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member findMemberByEmail(String email) {
-        return memberRepository.findMemberByEmail(email).get();
+        return memberRepository.findMemberByEmail(email).orElseThrow(MemberNotFoundException::new);
     }
 }
