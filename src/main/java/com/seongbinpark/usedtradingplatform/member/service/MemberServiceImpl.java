@@ -2,6 +2,7 @@ package com.seongbinpark.usedtradingplatform.member.service;
 
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
+import com.seongbinpark.usedtradingplatform.member.dto.PasswordRequest;
 import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
 import com.seongbinpark.usedtradingplatform.member.repository.MemberRepository;
@@ -52,5 +53,21 @@ public class MemberServiceImpl implements MemberService {
     @Transactional
     public void updateMemberProfileNickname(Member member, ProfileRequest profileRequest) {
         member.updateProfileNickname(profileRequest.getNickname());
+    }
+
+    @Override
+    public boolean isValidPassword(Member member, PasswordRequest passwordRequest, PasswordEncoder passwordEncoder) {
+        if (passwordEncoder.matches(member.getPassword(), passwordRequest.getOldPassword())) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    @Transactional
+    public void updateMemberPassword(Member member, PasswordRequest passwordRequest, PasswordEncoder passwordEncoder) {
+        if (isValidPassword(member, passwordRequest, passwordEncoder)) {
+            member.updatePassword(passwordEncoder.encode(passwordRequest.getNewPassword()));
+        }
     }
 }
