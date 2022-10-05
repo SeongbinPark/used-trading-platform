@@ -1,7 +1,9 @@
 package com.seongbinpark.usedtradingplatform.member.dto;
 
 
+import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -26,4 +28,12 @@ public class MemberDto {
     @NotEmpty
     private String nickname;
 
+    public static Member toEntity(MemberDto memberDto, PasswordEncoder passwordEncoder) {
+        return Member.builder()
+                .email(memberDto.getEmail())
+                .password(passwordEncoder.encode(memberDto.getPassword()))
+                .nickname(memberDto.getNickname())
+                .build();
+
+    }
 }
