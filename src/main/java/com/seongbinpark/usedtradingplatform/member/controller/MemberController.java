@@ -4,10 +4,7 @@ package com.seongbinpark.usedtradingplatform.member.controller;
 import com.seongbinpark.usedtradingplatform.commons.annotation.LoginMember;
 import com.seongbinpark.usedtradingplatform.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
-import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
-import com.seongbinpark.usedtradingplatform.member.dto.PasswordRequest;
-import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
-import com.seongbinpark.usedtradingplatform.member.dto.ProfileResponse;
+import com.seongbinpark.usedtradingplatform.member.dto.*;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
 import com.seongbinpark.usedtradingplatform.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -86,6 +83,15 @@ public class MemberController {
         if (memberService.isValidPassword(member, passwordRequest, passwordEncoder)) {
             memberService.updateMemberPassword(member, passwordRequest, passwordEncoder);
         }
+
+        return RESPONSE_OK;
+    }
+
+    @LoginRequired
+    @PutMapping("/my-location")
+    public ResponseEntity<HttpStatus> setMemberLocationAddress(@LoginMember Member member, @RequestBody LocationAddressRequest locationAddressRequest) {
+
+        memberService.setMemberLocationAddress(member, locationAddressRequest);
 
         return RESPONSE_OK;
     }

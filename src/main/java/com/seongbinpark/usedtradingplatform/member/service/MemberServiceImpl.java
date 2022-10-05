@@ -1,6 +1,7 @@
 package com.seongbinpark.usedtradingplatform.member.service;
 
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.dto.LocationAddressRequest;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
 import com.seongbinpark.usedtradingplatform.member.dto.PasswordRequest;
 import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
@@ -67,5 +68,10 @@ public class MemberServiceImpl implements MemberService {
     @Transactional
     public void updateMemberPassword(Member member, PasswordRequest passwordRequest, PasswordEncoder passwordEncoder) {
         member.updatePassword(passwordEncoder.encode(passwordRequest.getNewPassword()));
+    }
+
+    @Override
+    public void setMemberLocationAddress(Member member, LocationAddressRequest locationAddressRequest) {
+        member.setMemberLocationAddress(locationAddressRequest);
     }
 }
