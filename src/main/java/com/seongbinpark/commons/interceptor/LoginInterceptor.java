@@ -1,6 +1,7 @@
 package com.seongbinpark.commons.interceptor;
 
 import com.seongbinpark.commons.annotation.LoginRequired;
+import com.seongbinpark.usedtradingplatform.member.exception.UnauthenticatedAccessException;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -24,7 +25,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             Long memberId = loginService.getLoginMemberId();
 
             if (memberId == null) {
-                //예외 처리
+                throw new UnauthenticatedAccessException();
             }
         }
         return true;
