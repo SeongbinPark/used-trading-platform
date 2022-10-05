@@ -73,9 +73,9 @@ public class MemberController {
     }
 
     @LoginRequired
-    @PutMapping("/my-profile")
-    public ResponseEntity<ProfileResponse> updateMemberProfileNickname(long id, ProfileRequest profileRequest) {
-        Member member = memberService.findMemberById(id);
+    @PutMapping("/my-profile/{memberId}")
+    public ResponseEntity<ProfileResponse> updateMemberProfileNickname(@PathVariable long memberId, ProfileRequest profileRequest) {
+        Member member = memberService.findMemberById(memberId);
         memberService.updateMemberProfileNickname(member, profileRequest);
 
         return ResponseEntity.ok(ProfileResponse.of(member));

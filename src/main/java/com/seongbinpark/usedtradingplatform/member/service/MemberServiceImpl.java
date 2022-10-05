@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member findMemberById(long id) {
-        return memberRepository.findById(id).orElseThrow(MemberNotFoundException::new);
+        return memberRepository.findMemberById(id).orElseThrow(MemberNotFoundException::new);
     }
 
     @Override
