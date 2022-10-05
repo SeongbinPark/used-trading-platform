@@ -67,7 +67,7 @@ public class MemberController {
     @LoginRequired
     @GetMapping("/profile/{id}")
     public ResponseEntity<ProfileResponse> getMemberProfile(@PathVariable long id) {
-        Member memeber = loginService.getLoginMember(id);
-        return ResponseEntity.ok(ProfileResponse.of(memeber));
+        Member member = loginService.getLoginMember(id);
+        return ResponseEntity.ok(ProfileResponse.of(member));
     }
 }
