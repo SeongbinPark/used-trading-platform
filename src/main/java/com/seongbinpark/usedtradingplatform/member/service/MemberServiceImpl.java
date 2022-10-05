@@ -1,13 +1,13 @@
 package com.seongbinpark.usedtradingplatform.member.service;
 
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
 import com.seongbinpark.usedtradingplatform.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 
 @Service
@@ -31,5 +31,14 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member findMemberByEmail(String email) {
         return memberRepository.findMemberByEmail(email).orElseThrow(MemberNotFoundException::new);
+    }
+
+    @Override
+    public boolean isValidMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
+        Member member = findMemberByEmail(memberDto.getEmail());
+        if (passwordEncoder.matches(memberDto.getPassword(), member.getPassword())) {
+            return true;
+        }
+        return false;
     }
 }
