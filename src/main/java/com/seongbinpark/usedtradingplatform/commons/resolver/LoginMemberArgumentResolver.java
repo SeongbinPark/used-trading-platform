@@ -1,6 +1,6 @@
-package com.seongbinpark.commons.resolver;
+package com.seongbinpark.usedtradingplatform.commons.resolver;
 
-import com.seongbinpark.commons.annotation.LoginMember;
+import com.seongbinpark.usedtradingplatform.commons.annotation.LoginMember;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;

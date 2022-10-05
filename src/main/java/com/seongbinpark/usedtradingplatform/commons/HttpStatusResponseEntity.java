@@ -1,4 +1,4 @@
-package com.seongbinpark.commons;
+package com.seongbinpark.usedtradingplatform.commons;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

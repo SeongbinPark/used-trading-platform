@@ -1,6 +1,6 @@
-package com.seongbinpark.commons.interceptor;
+package com.seongbinpark.usedtradingplatform.commons.interceptor;
 
-import com.seongbinpark.commons.annotation.LoginRequired;
+import com.seongbinpark.usedtradingplatform.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.exception.UnauthenticatedAccessException;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
 import lombok.RequiredArgsConstructor;
