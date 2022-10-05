@@ -12,6 +12,7 @@ public interface MemberService {
 
     public Member findMemberByEmail(String email);
 
+    public Member findMemberById(long id);
     public boolean isValidMember(MemberDto memberDto, PasswordEncoder passwordEncoder);
 
 }

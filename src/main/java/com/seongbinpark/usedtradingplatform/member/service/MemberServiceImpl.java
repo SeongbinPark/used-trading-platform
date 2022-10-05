@@ -34,6 +34,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public Member findMemberById(long id) {
+        return memberRepository.findById(id).orElseThrow(MemberNotFoundException::new);
+    }
+
+    @Override
     public boolean isValidMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         Member member = findMemberByEmail(memberDto.getEmail());
         if (passwordEncoder.matches(memberDto.getPassword(), member.getPassword())) {
