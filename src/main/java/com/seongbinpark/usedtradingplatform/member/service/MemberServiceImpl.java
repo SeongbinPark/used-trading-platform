@@ -66,8 +66,6 @@ public class MemberServiceImpl implements MemberService {
     @Override
     @Transactional
     public void updateMemberPassword(Member member, PasswordRequest passwordRequest, PasswordEncoder passwordEncoder) {
-        if (isValidPassword(member, passwordRequest, passwordEncoder)) {
-            member.updatePassword(passwordEncoder.encode(passwordRequest.getNewPassword()));
-        }
+        member.updatePassword(passwordEncoder.encode(passwordRequest.getNewPassword()));
     }
 }

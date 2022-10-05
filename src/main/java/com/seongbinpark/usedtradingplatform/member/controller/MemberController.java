@@ -5,6 +5,7 @@ import com.seongbinpark.commons.HttpStatusResponseEntity;
 import com.seongbinpark.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
+import com.seongbinpark.usedtradingplatform.member.dto.PasswordRequest;
 import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
 import com.seongbinpark.usedtradingplatform.member.dto.ProfileResponse;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
@@ -81,4 +82,14 @@ public class MemberController {
         return ResponseEntity.ok(ProfileResponse.of(member));
     }
 
+    @LoginRequired
+    @PutMapping("/password")
+    public ResponseEntity<HttpStatus> changePassword(@RequestBody @Valid PasswordRequest passwordRequest) {
+        Member member = loginService.getLoginMember();
+        if (memberService.isValidPassword(member, passwordRequest, passwordEncoder)) {
+            memberService.updateMemberPassword(member, passwordRequest, passwordEncoder);
+        }
+
+        return RESPONSE_OK;
+    }
 }
