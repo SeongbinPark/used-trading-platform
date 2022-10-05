@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
@@ -23,5 +25,10 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public boolean isDuplicatedEmail(String email) {
         return memberRepository.existsByEmail(email);
+    }
+
+    @Override
+    public Member findMemberByEmail(String email) {
+        return memberRepository.findMemberByEmail(email).get();
     }
 }

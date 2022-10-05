@@ -8,4 +8,5 @@ public interface MemberService {
 
     public boolean isDuplicatedEmail(String email);
 
+    public Member findMemberByEmail(String email);
 }
