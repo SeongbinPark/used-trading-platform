@@ -66,16 +66,16 @@ public class MemberController {
     }
 
     @LoginRequired
-    @GetMapping("/profile/{id}")
-    public ResponseEntity<ProfileResponse> getMemberProfile(@PathVariable long id) {
-        Member member = loginService.getLoginMember(id);
+    @GetMapping("/my-profile")
+    public ResponseEntity<ProfileResponse> getMemberProfile() {
+        Member member = loginService.getLoginMember();
         return ResponseEntity.ok(ProfileResponse.of(member));
     }
 
     @LoginRequired
-    @PutMapping("/my-profile/{memberId}")
-    public ResponseEntity<ProfileResponse> updateMemberProfileNickname(@PathVariable long memberId, ProfileRequest profileRequest) {
-        Member member = memberService.findMemberById(memberId);
+    @PutMapping("/my-profile")
+    public ResponseEntity<ProfileResponse> updateMemberProfileNickname(@RequestBody ProfileRequest profileRequest) {
+        Member member = loginService.getLoginMember();
         memberService.updateMemberProfileNickname(member, profileRequest);
 
         return ResponseEntity.ok(ProfileResponse.of(member));

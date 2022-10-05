@@ -27,10 +27,10 @@ public class SessionLoginService implements LoginService {
     }
 
     @Override
-    public Member getLoginMember(long id) {
-//        Long memberId = (Long) httpSession.getAttribute(MEMBER_ID);
+    public Member getLoginMember() {
+        Long memberId = (Long) httpSession.getAttribute(MEMBER_ID);
 
-        return memberService.findMemberById(id);
+        return memberService.findMemberById(memberId);
     }
 
     @Override
