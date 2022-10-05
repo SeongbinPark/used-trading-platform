@@ -1,8 +1,14 @@
 package com.seongbinpark.usedtradingplatform.member.controller;
 
 
+import com.seongbinpark.commons.HttpStatusResponseEntity;
+import com.seongbinpark.commons.annotation.LoginMember;
+import com.seongbinpark.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
+import com.seongbinpark.usedtradingplatform.member.dto.PasswordRequest;
+import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
+import com.seongbinpark.usedtradingplatform.member.dto.ProfileResponse;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
 import com.seongbinpark.usedtradingplatform.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +58,36 @@ public class MemberController {
             return RESPONSE_OK;
         }
         return RESPONSE_BAD_REQUEST;
+    }
+
+    @LoginRequired
+    @GetMapping("/logout")
+    public ResponseEntity<HttpStatus> logout() {
+        loginService.logout();
+        return RESPONSE_OK;
+    }
+
+    @LoginRequired
+    @GetMapping("/my-profile")
+    public ResponseEntity<ProfileResponse> getMemberProfile(@LoginMember Member member) {
+        return ResponseEntity.ok(ProfileResponse.of(member));
+    }
+
+    @LoginRequired
+    @PutMapping("/my-profile")
+    public ResponseEntity<ProfileResponse> updateMemberProfileNickname(@LoginMember Member member, @RequestBody ProfileRequest profileRequest) {
+        memberService.updateMemberProfileNickname(member, profileRequest);
+
+        return ResponseEntity.ok(ProfileResponse.of(member));
+    }
+
+    @LoginRequired
+    @PutMapping("/password")
+    public ResponseEntity<HttpStatus> changePassword(@LoginMember Member member, @RequestBody @Valid PasswordRequest passwordRequest) {
+        if (memberService.isValidPassword(member, passwordRequest, passwordEncoder)) {
+            memberService.updateMemberPassword(member, passwordRequest, passwordEncoder);
+        }
+
+        return RESPONSE_OK;
     }
 }

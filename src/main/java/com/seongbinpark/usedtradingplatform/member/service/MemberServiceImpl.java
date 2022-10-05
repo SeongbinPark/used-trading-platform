@@ -2,6 +2,8 @@ package com.seongbinpark.usedtradingplatform.member.service;
 
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
+import com.seongbinpark.usedtradingplatform.member.dto.PasswordRequest;
+import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
 import com.seongbinpark.usedtradingplatform.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,11 +36,36 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public Member findMemberById(long id) {
+        return memberRepository.findMemberById(id).orElseThrow(MemberNotFoundException::new);
+    }
+
+    @Override
     public boolean isValidMember(MemberDto memberDto, PasswordEncoder passwordEncoder) {
         Member member = findMemberByEmail(memberDto.getEmail());
         if (passwordEncoder.matches(memberDto.getPassword(), member.getPassword())) {
             return true;
         }
         return false;
+    }
+
+    @Override
+    @Transactional
+    public void updateMemberProfileNickname(Member member, ProfileRequest profileRequest) {
+        member.updateProfileNickname(profileRequest.getNickname());
+    }
+
+    @Override
+    public boolean isValidPassword(Member member, PasswordRequest passwordRequest, PasswordEncoder passwordEncoder) {
+        if (passwordEncoder.matches(member.getPassword(), passwordRequest.getOldPassword())) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    @Transactional
+    public void updateMemberPassword(Member member, PasswordRequest passwordRequest, PasswordEncoder passwordEncoder) {
+        member.updatePassword(passwordEncoder.encode(passwordRequest.getNewPassword()));
     }
 }
