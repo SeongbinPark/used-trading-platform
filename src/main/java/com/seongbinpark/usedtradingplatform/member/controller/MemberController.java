@@ -2,6 +2,7 @@ package com.seongbinpark.usedtradingplatform.member.controller;
 
 
 import com.seongbinpark.commons.HttpStatusResponseEntity;
+import com.seongbinpark.commons.annotation.LoginMember;
 import com.seongbinpark.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
@@ -68,15 +69,13 @@ public class MemberController {
 
     @LoginRequired
     @GetMapping("/my-profile")
-    public ResponseEntity<ProfileResponse> getMemberProfile() {
-        Member member = loginService.getLoginMember();
+    public ResponseEntity<ProfileResponse> getMemberProfile(@LoginMember Member member) {
         return ResponseEntity.ok(ProfileResponse.of(member));
     }
 
     @LoginRequired
     @PutMapping("/my-profile")
-    public ResponseEntity<ProfileResponse> updateMemberProfileNickname(@RequestBody ProfileRequest profileRequest) {
-        Member member = loginService.getLoginMember();
+    public ResponseEntity<ProfileResponse> updateMemberProfileNickname(@LoginMember Member member, @RequestBody ProfileRequest profileRequest) {
         memberService.updateMemberProfileNickname(member, profileRequest);
 
         return ResponseEntity.ok(ProfileResponse.of(member));
@@ -84,8 +83,7 @@ public class MemberController {
 
     @LoginRequired
     @PutMapping("/password")
-    public ResponseEntity<HttpStatus> changePassword(@RequestBody @Valid PasswordRequest passwordRequest) {
-        Member member = loginService.getLoginMember();
+    public ResponseEntity<HttpStatus> changePassword(@LoginMember Member member, @RequestBody @Valid PasswordRequest passwordRequest) {
         if (memberService.isValidPassword(member, passwordRequest, passwordEncoder)) {
             memberService.updateMemberPassword(member, passwordRequest, passwordEncoder);
         }
