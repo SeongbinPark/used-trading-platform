@@ -1,6 +1,8 @@
 package com.seongbinpark.usedtradingplatform.member.controller;
 
 
+import com.seongbinpark.commons.HttpStatusResponseEntity;
+import com.seongbinpark.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
@@ -52,5 +54,12 @@ public class MemberController {
             return RESPONSE_OK;
         }
         return RESPONSE_BAD_REQUEST;
+    }
+
+    @LoginRequired
+    @GetMapping("/logout")
+    public ResponseEntity<HttpStatus> logout() {
+        loginService.logout();
+        return RESPONSE_OK;
     }
 }
