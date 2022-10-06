@@ -1,5 +1,6 @@
 package com.seongbinpark.usedtradingplatform.post.controller;
 
+import com.seongbinpark.usedtradingplatform.commons.annotation.AreaInfoRequired;
 import com.seongbinpark.usedtradingplatform.commons.annotation.LoginMember;
 import com.seongbinpark.usedtradingplatform.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
@@ -26,6 +27,7 @@ public class PostController {
 
     @LoginRequired
     @PostMapping
+    @AreaInfoRequired
     public ResponseEntity<HttpStatus> createNewPost(@RequestBody @Valid PostRequest postRequest, @LoginMember Member member) {
         postService.createNewPost(postRequest, member);
         return RESPONSE_CREATED;
