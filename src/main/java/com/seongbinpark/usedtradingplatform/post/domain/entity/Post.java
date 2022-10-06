@@ -5,6 +5,7 @@ import com.seongbinpark.usedtradingplatform.member.domain.entity.Address;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Location;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +23,9 @@ public class Post extends BaseTimeEntity {
 
     private String title;
 
+    @Enumerated(EnumType.STRING)
+    private TradeStatus status;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member author;
@@ -38,6 +42,14 @@ public class Post extends BaseTimeEntity {
     @Column(name = "IS_REMOVED")
     private boolean removed = false;
 
-
+    @Builder
+    public Post(String title, TradeStatus status, Member author, String content, Address address, Location location) {
+        this.title = title;
+        this.status = status;
+        this.author = author;
+        this.content = content;
+        this.address = address;
+        this.location = location;
+    }
 }
 
