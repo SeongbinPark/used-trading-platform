@@ -3,6 +3,7 @@ package com.seongbinpark.usedtradingplatform.commons.advice;
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
 import com.seongbinpark.usedtradingplatform.member.exception.UnauthenticatedAccessException;
 import com.seongbinpark.usedtradingplatform.post.exception.AreaInfoNotDefinedException;
+import com.seongbinpark.usedtradingplatform.post.exception.PostNotFoundException;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,5 +28,10 @@ public class ExceptionAdvice {
     @ExceptionHandler(AreaInfoNotDefinedException.class)
     public ResponseEntity<HttpStatus> areaInfoNotDefinedException(AreaInfoNotDefinedException e) {
         return new ResponseEntity(e.getMessage(), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(PostNotFoundException.class)
+    public ResponseEntity<HttpStatus> postNotFoundException() {
+        return RESPONSE_NOT_FOUND;
     }
 }
