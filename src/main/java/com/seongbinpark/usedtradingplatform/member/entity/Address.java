@@ -1,4 +1,4 @@
-package com.seongbinpark.usedtradingplatform.member.domain.entity;
+package com.seongbinpark.usedtradingplatform.member.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

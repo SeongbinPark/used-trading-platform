@@ -1,7 +1,7 @@
 package com.seongbinpark.usedtradingplatform.member.dto;
 
 
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.entity.Member;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

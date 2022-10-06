@@ -1,6 +1,6 @@
 package com.seongbinpark.usedtradingplatform.member.repository;
 
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

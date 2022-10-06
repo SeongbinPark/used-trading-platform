@@ -3,7 +3,7 @@ package com.seongbinpark.usedtradingplatform.member.controller;
 
 import com.seongbinpark.usedtradingplatform.commons.annotation.LoginMember;
 import com.seongbinpark.usedtradingplatform.commons.annotation.LoginRequired;
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.dto.*;
 import com.seongbinpark.usedtradingplatform.member.service.LoginService;
 import com.seongbinpark.usedtradingplatform.member.service.MemberService;

@@ -1,11 +1,9 @@
 package com.seongbinpark.usedtradingplatform.member.dto;
 
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Address;
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Location;
+import com.seongbinpark.usedtradingplatform.member.entity.Address;
+import com.seongbinpark.usedtradingplatform.member.entity.Location;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
-import javax.validation.constraints.NotNull;
 
 @Getter
 @RequiredArgsConstructor

@@ -1,8 +1,8 @@
 package com.seongbinpark.usedtradingplatform.post.dto;
 
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Address;
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Location;
-import com.seongbinpark.usedtradingplatform.post.domain.entity.Post;
+import com.seongbinpark.usedtradingplatform.member.entity.Address;
+import com.seongbinpark.usedtradingplatform.member.entity.Location;
+import com.seongbinpark.usedtradingplatform.post.entity.Post;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

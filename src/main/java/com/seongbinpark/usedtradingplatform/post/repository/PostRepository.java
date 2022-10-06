@@ -1,6 +1,6 @@
 package com.seongbinpark.usedtradingplatform.post.repository;
 
-import com.seongbinpark.usedtradingplatform.post.domain.entity.Post;
+import com.seongbinpark.usedtradingplatform.post.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

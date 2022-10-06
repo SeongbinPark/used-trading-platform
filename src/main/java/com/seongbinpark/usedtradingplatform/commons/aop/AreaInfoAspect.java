@@ -1,7 +1,7 @@
 package com.seongbinpark.usedtradingplatform.commons.aop;
 
 
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.entity.Member;
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
 import com.seongbinpark.usedtradingplatform.post.exception.AreaInfoNotDefinedException;
 import org.aspectj.lang.JoinPoint;

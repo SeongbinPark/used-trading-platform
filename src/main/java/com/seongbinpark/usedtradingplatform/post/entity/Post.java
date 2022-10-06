@@ -1,9 +1,9 @@
-package com.seongbinpark.usedtradingplatform.post.domain.entity;
+package com.seongbinpark.usedtradingplatform.post.entity;
 
 import com.seongbinpark.usedtradingplatform.commons.BaseTimeEntity;
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Address;
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Location;
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.entity.Address;
+import com.seongbinpark.usedtradingplatform.member.entity.Location;
+import com.seongbinpark.usedtradingplatform.member.entity.Member;
 import com.seongbinpark.usedtradingplatform.post.dto.PostRequest;
 import lombok.AccessLevel;
 import lombok.Builder;

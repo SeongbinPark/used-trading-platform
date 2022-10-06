@@ -1,8 +1,8 @@
 package com.seongbinpark.usedtradingplatform.post.service;
 
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
-import com.seongbinpark.usedtradingplatform.post.domain.entity.Category;
-import com.seongbinpark.usedtradingplatform.post.domain.entity.Post;
+import com.seongbinpark.usedtradingplatform.member.entity.Member;
+import com.seongbinpark.usedtradingplatform.post.entity.Category;
+import com.seongbinpark.usedtradingplatform.post.entity.Post;
 import com.seongbinpark.usedtradingplatform.post.dto.PostRequest;
 import com.seongbinpark.usedtradingplatform.post.exception.CategoryNotFoundException;
 import com.seongbinpark.usedtradingplatform.post.exception.PostNotFoundException;

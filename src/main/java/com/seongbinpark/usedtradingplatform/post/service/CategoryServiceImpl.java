@@ -1,6 +1,6 @@
 package com.seongbinpark.usedtradingplatform.post.service;
 
-import com.seongbinpark.usedtradingplatform.post.domain.entity.Category;
+import com.seongbinpark.usedtradingplatform.post.entity.Category;
 import com.seongbinpark.usedtradingplatform.post.exception.CategoryNotFoundException;
 import com.seongbinpark.usedtradingplatform.post.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;

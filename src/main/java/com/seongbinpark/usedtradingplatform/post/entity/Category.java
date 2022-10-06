@@ -1,4 +1,4 @@
-package com.seongbinpark.usedtradingplatform.post.domain.entity;
+package com.seongbinpark.usedtradingplatform.post.entity;
 
 
 import lombok.AccessLevel;
