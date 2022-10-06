@@ -26,7 +26,7 @@ public class PostRequest {
     private final String content;
 
     @NotEmpty
-    private final String category;
+    private final String categoryName;
 
     public Post toEntity(Member member) {
         return Post.builder()

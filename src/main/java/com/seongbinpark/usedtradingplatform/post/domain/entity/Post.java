@@ -4,6 +4,7 @@ import com.seongbinpark.usedtradingplatform.commons.BaseTimeEntity;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Address;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Location;
 import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.post.dto.PostRequest;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -54,6 +55,19 @@ public class Post extends BaseTimeEntity {
         this.content = content;
         this.address = address;
         this.location = location;
+    }
+
+    public void updatePost(PostRequest postRequest) {
+        this.title= postRequest.getTitle();
+        this.content= postRequest.getContent();
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
 

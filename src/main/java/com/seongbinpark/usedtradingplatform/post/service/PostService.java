@@ -9,4 +9,6 @@ public interface PostService {
     public void createNewPost(PostRequest postRequest, Member member);
 
     public Post findPostById(Long postId);
+
+    public void updatePost(Post post, PostRequest postRequest);
 }
