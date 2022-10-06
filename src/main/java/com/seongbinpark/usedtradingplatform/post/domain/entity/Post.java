@@ -23,6 +23,10 @@ public class Post extends BaseTimeEntity {
 
     private String title;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATEGORY_ID")
+    private Category category;
+
     @Enumerated(EnumType.STRING)
     private TradeStatus status;
 
