@@ -1,5 +1,6 @@
 package com.seongbinpark.usedtradingplatform.commons.advice;
 
+import com.seongbinpark.usedtradingplatform.image.exception.UnsupportedFileTypeException;
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
 import com.seongbinpark.usedtradingplatform.member.exception.PasswordNotMatchedException;
 import com.seongbinpark.usedtradingplatform.member.exception.UnauthenticatedAccessException;
@@ -44,6 +45,11 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(PasswordNotMatchedException.class)
     public ResponseEntity<HttpStatus> passwordNotMatchedException() {
+        return RESPONSE_BAD_REQUEST;
+    }
+
+    @ExceptionHandler(UnsupportedFileTypeException.class)
+    public ResponseEntity<HttpStatus> unsupportedFileTypeException() {
         return RESPONSE_BAD_REQUEST;
     }
 }
