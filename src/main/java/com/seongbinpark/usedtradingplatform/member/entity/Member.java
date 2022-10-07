@@ -1,4 +1,4 @@
-package com.seongbinpark.usedtradingplatform.member.domain.entity;
+package com.seongbinpark.usedtradingplatform.member.entity;
 
 import com.seongbinpark.usedtradingplatform.member.dto.LocationAddressRequest;
 import lombok.AccessLevel;

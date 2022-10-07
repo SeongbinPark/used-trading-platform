@@ -1,7 +1,7 @@
 package com.seongbinpark.usedtradingplatform.member.service;
 
 
-import com.seongbinpark.usedtradingplatform.member.domain.entity.Member;
+import com.seongbinpark.usedtradingplatform.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
