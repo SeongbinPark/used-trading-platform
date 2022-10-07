@@ -1,6 +1,7 @@
 package com.seongbinpark.usedtradingplatform.commons.advice;
 
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
+import com.seongbinpark.usedtradingplatform.member.exception.PasswordNotMatchedException;
 import com.seongbinpark.usedtradingplatform.member.exception.UnauthenticatedAccessException;
 import com.seongbinpark.usedtradingplatform.post.exception.AreaInfoNotDefinedException;
 import com.seongbinpark.usedtradingplatform.post.exception.PostNotFoundException;
@@ -39,5 +40,10 @@ public class ExceptionAdvice {
     @ExceptionHandler(UnauthorizedAccessException.class)
     public ResponseEntity<HttpStatus> unauthorizedAccessException() {
         return RESPONSE_UNAUTHORIZED;
+    }
+
+    @ExceptionHandler(PasswordNotMatchedException.class)
+    public ResponseEntity<HttpStatus> passwordNotMatchedException() {
+        return RESPONSE_BAD_REQUEST;
     }
 }
