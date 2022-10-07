@@ -6,6 +6,7 @@ import com.seongbinpark.usedtradingplatform.member.dto.MemberDto;
 import com.seongbinpark.usedtradingplatform.member.dto.PasswordRequest;
 import com.seongbinpark.usedtradingplatform.member.dto.ProfileRequest;
 import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundException;
+import com.seongbinpark.usedtradingplatform.member.exception.PasswordNotMatchedException;
 import com.seongbinpark.usedtradingplatform.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -58,10 +59,10 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean isValidPassword(Member member, PasswordRequest passwordRequest, PasswordEncoder passwordEncoder) {
-        if (passwordEncoder.matches(member.getPassword(), passwordRequest.getOldPassword())) {
-            return true;
+        if (!passwordEncoder.matches(member.getPassword(), passwordRequest.getOldPassword())) {
+            throw new PasswordNotMatchedException();
         }
-        return false;
+        return true;
     }
 
     @Override
