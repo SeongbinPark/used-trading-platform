@@ -4,6 +4,7 @@ import com.seongbinpark.usedtradingplatform.member.exception.MemberNotFoundExcep
 import com.seongbinpark.usedtradingplatform.member.exception.UnauthenticatedAccessException;
 import com.seongbinpark.usedtradingplatform.post.exception.AreaInfoNotDefinedException;
 import com.seongbinpark.usedtradingplatform.post.exception.PostNotFoundException;
+import com.seongbinpark.usedtradingplatform.post.exception.UnauthorizedAccessException;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,5 +34,10 @@ public class ExceptionAdvice {
     @ExceptionHandler(PostNotFoundException.class)
     public ResponseEntity<HttpStatus> postNotFoundException() {
         return RESPONSE_NOT_FOUND;
+    }
+
+    @ExceptionHandler(UnauthorizedAccessException.class)
+    public ResponseEntity<HttpStatus> unauthorizedAccessException() {
+        return RESPONSE_UNAUTHORIZED;
     }
 }

@@ -69,5 +69,9 @@ public class Post extends BaseTimeEntity {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public void deletePost() {
+        this.removed = true;
+    }
 }
 
