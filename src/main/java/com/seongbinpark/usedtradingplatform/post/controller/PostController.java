@@ -45,6 +45,17 @@ public class PostController {
         Post post = postService.findPostById(postId);
 
         postService.updatePost(post, postRequest);
+
+        return RESPONSE_OK;
+    }
+
+    @LoginRequired
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<HttpStatus> deletePost(@PathVariable Long postId) {
+        Post post = postService.findPostById(postId);
+
+        postService.deletePost(post);
+
         return RESPONSE_OK;
     }
 }
