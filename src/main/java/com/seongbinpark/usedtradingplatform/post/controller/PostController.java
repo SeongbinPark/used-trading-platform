@@ -6,6 +6,7 @@ import com.seongbinpark.usedtradingplatform.commons.annotation.LoginRequired;
 import com.seongbinpark.usedtradingplatform.member.entity.Member;
 import com.seongbinpark.usedtradingplatform.post.dto.PostRequest;
 import com.seongbinpark.usedtradingplatform.post.dto.PostResponse;
+import com.seongbinpark.usedtradingplatform.post.entity.Post;
 import com.seongbinpark.usedtradingplatform.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -35,5 +36,15 @@ public class PostController {
     @GetMapping("{/postId}")
     public ResponseEntity<PostResponse> findPostById(@PathVariable Long postId) {
         return ResponseEntity.ok(PostResponse.of(postService.findPostById(postId)));
+    }
+
+    @LoginRequired
+    @PutMapping("/{postId}")
+    public ResponseEntity<HttpStatus> updatePost(@Valid @RequestBody PostRequest postRequest,
+                                                 @PathVariable Long postId) {
+        Post post = postService.findPostById(postId);
+
+        postService.updatePost(post, postRequest);
+        return RESPONSE_OK;
     }
 }
